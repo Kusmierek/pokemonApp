@@ -1,0 +1,9 @@
+::ng-deep {
+  input,
+  .p-password-input {
+    max-width: 14rem;
+    min-height: 2rem;
+    background-color: white;
+    color: black;
+  }
+}

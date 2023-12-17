@@ -1,1 +1,11 @@
-/* You can add global styles to this file, and also import other style files */
+@import "primeng/resources/themes/vela-orange/theme.css";
+@import "primeng/resources/primeng.css";
+
+label {
+  font-size: 1.2rem;
+  color: #000;
+}
+
+p-message {
+  max-width: 13rem;
+}

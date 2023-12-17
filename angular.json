@@ -65,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "pokemonApp:build:production"
+              "buildTarget": "pokemonApp:build:production"
             },
             "development": {
-              "browserTarget": "pokemonApp:build:development"
+              "buildTarget": "pokemonApp:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -76,7 +76,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "pokemonApp:build"
+            "buildTarget": "pokemonApp:build"
           }
         },
         "test": {
@@ -100,5 +100,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "8169eb0b-bba6-422a-bee3-c071763eaa05"
   }
 }
