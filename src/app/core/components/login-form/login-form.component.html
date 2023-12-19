@@ -1,0 +1,35 @@
+<p-card
+  [style]="{ maxWidth: '360px', backgroundColor: 'var(--primary-color)' }"
+>
+  <form action="" [formGroup]="loginForm">
+    <div class="input-group">
+      <label for="username">Username</label>
+      <input
+        type="text"
+        pInputText
+        id="username"
+        name="username"
+        formControlName="username"
+      />
+      <p-message
+        *ngIf="loginForm.controls.username.errors?.['required'] && (loginForm.controls.username.dirty || loginForm.controls.username.touched)"
+        severity="error"
+        text="Field is required"
+      ></p-message>
+    </div>
+    <div class="input-group">
+      <label for="password">Password</label>
+      <p-password
+        id="password"
+        name="password"
+        formControlName="password"
+        [feedback]="false"
+      ></p-password>
+      <p-message
+        *ngIf="loginForm.controls.password.errors?.['required'] && (loginForm.controls.password.dirty || loginForm.controls.password.touched)"
+        severity="error"
+        text="Field is required"
+      ></p-message>
+    </div>
+    <p-button label="Submit" type="Submit" severity="secondary" /></form
+></p-card>
