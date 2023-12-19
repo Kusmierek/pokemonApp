@@ -1,0 +1,10 @@
+<p-card
+  styleClass="p-card-pokemon"
+  header="{{ pokemon.name }}"
+  subheader="{{ pokemon.description | uppercase }}"
+>
+  <ng-template pTemplate="header">
+    <img alt="Card" src="{{ pokemon.imageUrl }}" />
+  </ng-template>
+  <p-button label="See Details" type="Submit" severity="secondary" />
+</p-card>
