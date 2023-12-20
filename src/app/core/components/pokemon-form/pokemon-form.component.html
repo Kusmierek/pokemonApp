@@ -1,0 +1,122 @@
+<form action="" [formGroup]="pokemonFormService.allPokemons">
+  <ng-container formArrayName="pokemons">
+    @for (pokemonForm of pokemonFormService.pokemons.controls; track
+    pokemonForm; let i = $index) {
+    <form action="" class="pokemon-form" [formGroup]="pokemonForm">
+      <div class="input-group">
+        <label for="name">Name</label>
+        <input
+          type="text"
+          pInputText
+          id="name"
+          name="name"
+          formControlName="name"
+        />
+        @if(pokemonFormService.pokemons.controls[i].controls.name.errors?.['required']
+        && (pokemonFormService.pokemons.controls[i].controls.name.dirty ||
+        pokemonForm.controls.name.touched)) {
+        <p-message severity="error" text="Field is required"></p-message>
+        }
+      </div>
+      <div class="input-group">
+        <label for="description">Description</label>
+        <input
+          type="text"
+          pInputText
+          name="description"
+          formControlName="description"
+        />
+        @if (pokemonForm.controls.description.errors?.['required'] &&
+        (pokemonForm.controls.description.dirty ||
+        pokemonForm.controls.description.touched)) {
+        <p-message severity="error" text="Field is required"></p-message>
+        }
+      </div>
+      <div class="input-group">
+        <label for="imageUrl">Image Url</label>
+        <input
+          type="text"
+          pInputText
+          id="imageUrl"
+          name="imageUrl"
+          formControlName="imageUrl"
+        />
+        @if (pokemonForm.controls.imageUrl.errors?.['required'] &&
+        (pokemonForm.controls.imageUrl.dirty ||
+        pokemonForm.controls.imageUrl.touched)) {
+        <p-message severity="error" text="Field is required"></p-message>
+        }
+      </div>
+      <div class="input-group">
+        <label for="attack">Attack</label>
+        <input
+          type="number"
+          pInputText
+          id="attack"
+          name="attack"
+          formControlName="attack"
+        />
+        @if (pokemonForm.controls.attack.errors?.['required'] &&
+        (pokemonForm.controls.attack.dirty ||
+        pokemonForm.controls.attack.touched)) {
+        <p-message severity="error" text="Field is required"></p-message>
+        }
+      </div>
+      <div class="input-group">
+        <label for="defense">Defense</label>
+        <input
+          type="number"
+          pInputText
+          id="defense"
+          name="defense"
+          formControlName="defense"
+        />
+        @if (pokemonForm.controls.defense.errors?.['required'] &&
+        (pokemonForm.controls.defense.dirty ||
+        pokemonForm.controls.defense.touched)) {
+        <p-message severity="error" text="Field is required"></p-message>
+        }
+      </div>
+      <div class="input-group">
+        <label for="attack">Intelligence</label>
+        <input
+          type="number"
+          pInputText
+          id="intelligence"
+          name="intelligence"
+          formControlName="intelligence"
+        />
+        @if (pokemonForm.controls.attack.errors?.['required'] &&
+        (pokemonForm.controls.attack.dirty ||
+        pokemonForm.controls.attack.touched)) {
+        <p-message severity="error" text="Field is required"></p-message>
+        }
+      </div>
+      <div class="input-group">
+        <label for="agility">Agility</label>
+        <input
+          type="number"
+          pInputText
+          id="agility"
+          name="agility"
+          formControlName="agility"
+        />
+        @if (pokemonForm.controls.attack.errors?.['required'] &&
+        (pokemonForm.controls.attack.dirty ||
+        pokemonForm.controls.attack.touched)) {
+        <p-message severity="error" text="Field is required"></p-message>
+        }
+      </div>
+      {{ log() }}
+    </form>
+    }
+    <div>
+      <p-button
+        label="Add"
+        (onClick)="pokemonFormService.addPokemon()"
+        severity="success"
+      />
+      <p-button label="Submit" type="Submit" severity="secondary" />
+    </div>
+  </ng-container>
+</form>

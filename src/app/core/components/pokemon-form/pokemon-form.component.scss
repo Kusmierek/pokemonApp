@@ -1,0 +1,14 @@
+.pokemon-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+.input-group {
+  max-width: 25rem;
+  label {
+    color: #ffffffde;
+  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
