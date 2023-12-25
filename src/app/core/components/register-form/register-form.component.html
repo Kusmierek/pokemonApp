@@ -1,0 +1,81 @@
+<p-card
+  [style]="{ maxWidth: '360px', backgroundColor: 'var(--primary-color)' }"
+>
+  <form (ngSubmit)="onSubmit()" [formGroup]="registerForm">
+    <div class="input-group">
+      <label for="username">Username</label>
+      <input
+        type="text"
+        pInputText
+        id="username"
+        name="username"
+        formControlName="username"
+      />
+      <p-message
+        *ngIf="registerForm.controls.username.errors?.['required'] && (registerForm.controls.username.dirty || registerForm.controls.username.touched)"
+        severity="error"
+        text="Field is required"
+      ></p-message>
+      <p-message
+        *ngIf="registerForm.controls.username.errors?.['minLength'] && (registerForm.controls.username.dirty || registerForm.controls.username.touched)"
+        severity="error"
+        text="Username must have min 3 characters"
+      ></p-message>
+    </div>
+    <div class="input-group">
+      <label for="email">E-mail</label>
+      <input pInputText id="email" name="email" formControlName="email" />
+      <p-message
+        *ngIf="registerForm.controls.email.errors?.['email'] && (registerForm.controls.email.dirty || registerForm.controls.email.touched)"
+        severity="error"
+        text="Field have to be in email format"
+      ></p-message>
+      <p-message
+        *ngIf="registerForm.controls.email.errors?.['required'] && (registerForm.controls.email.dirty || registerForm.controls.email.touched)"
+        severity="error"
+        text="Field is required"
+      ></p-message>
+    </div>
+    <div class="input-group">
+      <label for="password">Password</label>
+      <p-password
+        id="password"
+        name="password"
+        formControlName="password"
+      ></p-password>
+      <p-message
+        *ngIf="registerForm.controls.password.errors?.['required'] && (registerForm.controls.password.dirty || registerForm.controls.password.touched)"
+        severity="error"
+        text="Field is required"
+      ></p-message>
+    </div>
+    <div class="input-group">
+      <label for="confirmPassword">Confirm Password</label>
+      <p-password
+        id="confirmPassword"
+        name="confirmPassword"
+        formControlName="confirmPassword"
+      ></p-password>
+      <p-message
+        *ngIf="
+          registerForm.controls.confirmPassword.errors?.['required'] &&
+          (registerForm.controls.confirmPassword.dirty ||
+            registerForm.controls.confirmPassword.touched)
+        "
+        severity="error"
+        text="Field is required"
+      ></p-message>
+      <p-message
+        *ngIf="registerForm.errors?.['PasswordNoMatch']  && (registerForm.controls.confirmPassword.dirty || registerForm.controls.confirmPassword.touched)"
+        severity="error"
+        text="Passwords must be the same"
+      ></p-message>
+    </div>
+    <p-button
+      label="Submit"
+      type="submit"
+      severity="secondary"
+      [disabled]="!registerForm.valid"
+    />
+  </form>
+</p-card>
