@@ -5,7 +5,16 @@ const routes: Routes = [
   {
     path: "pokemon",
     loadChildren: () =>
-      import("./pages/pages-routing.module").then((m) => m.PageRoutingModule),
+      import("./pages/routing/pokemon-routing.module").then(
+        (m) => m.PageRoutingModule
+      ),
+  },
+  {
+    path: "admin",
+    loadChildren: () =>
+      import("./pages/routing/admin-routing.module").then(
+        (m) => m.PageRoutingModule
+      ),
   },
 ];
 
