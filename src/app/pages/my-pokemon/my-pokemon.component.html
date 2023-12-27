@@ -1,0 +1,6 @@
+<h2>See our pokemons</h2>
+<div class="mypokemon-page">
+  @for (pokemon of pokemons | async; track pokemon.id){
+  <app-pokemon-card [pokemon]="pokemon" />
+  }
+</div>
