@@ -1,0 +1,19 @@
+.admin-tile {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--surface-card);
+  color: white;
+  gap: 0.8rem;
+  border-radius: 0.3rem;
+  width: 100%;
+  padding: 0.4rem 1.2rem;
+  span {
+    font-weight: 700;
+  }
+}
+
+.admin-tile-buttons {
+  display: flex;
+  gap: 0.4rem 0.8rem;
+}

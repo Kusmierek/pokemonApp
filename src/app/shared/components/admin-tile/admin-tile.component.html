@@ -1,0 +1,14 @@
+<div class="admin-tile">
+  @for ( property of (providedObject | keyvalue: asIsOrder); track $index) {
+  <span>{{ property.key }}:</span> {{ property.value | ellipsis : 10 }}
+  }
+  <div class="admin-tile-buttons">
+    <p-button label="Delete" severity="danger"></p-button>
+    <p-button
+      label="Update"
+      [raised]="true"
+      severity="info"
+      (onClick)="onUpdate()"
+    ></p-button>
+  </div>
+</div>
