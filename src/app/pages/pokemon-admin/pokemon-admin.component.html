@@ -1,0 +1,30 @@
+<main class="pokemon-admin-main">
+  <h2>Pokemon Admin Panel</h2>
+  <p-button
+    label="Add Pokemon"
+    (onClick)="changeVisible()"
+    severity="secondary"
+  />
+  <div class="pokemon-admin">
+    @for (pokemon of pokemons | async; track pokemon.id){
+    <app-admin-tile
+      [providedObject]="pokemon"
+      (onUpdateEmitter)="changeVisible($event)"
+    />
+    }
+  </div>
+  <p-dialog
+    header="Pokemons Form"
+    [(visible)]="visible"
+    [modal]="true"
+    [style]="{ width: '50vw' }"
+    [draggable]="false"
+    [resizable]="false"
+  >
+    <app-pokemon-form
+      [isUpdate]="isUpdate"
+      [updatedPokemon]="updatedPokemon"
+      (changeVisible)="changeVisible()"
+    />
+  </p-dialog>
+</main>
