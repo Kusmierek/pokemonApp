@@ -1,0 +1,12 @@
+<div class="flex align-items-center justify-content-center">
+  <div class="flex-1">
+    <p-paginator
+      (onPageChange)="onPageChange($event)"
+      [first]="first"
+      [rows]="rows"
+      [totalRecords]="totalItems"
+      [rowsPerPageOptions]="rowsPerPage"
+      [showFirstLastIcon]="false"
+    ></p-paginator>
+  </div>
+</div>
