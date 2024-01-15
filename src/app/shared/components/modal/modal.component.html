@@ -1,5 +1,7 @@
 <div>
   <h2>{{ textInformation }}</h2>
-  <p-button severity="success">Yes</p-button>
-  <p-button severity="danger">No</p-button>
+  <div class="buttons">
+    <p-button (click)="isConfirm(true)" severity="info">Yes</p-button>
+    <p-button (click)="isConfirm(false)" severity="danger">No</p-button>
+  </div>
 </div>

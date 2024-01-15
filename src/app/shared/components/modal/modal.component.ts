@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, EventEmitter, Input, Output } from "@angular/core";
 
 @Component({
   selector: "app-modal",
@@ -6,5 +6,11 @@ import { Component, Input } from "@angular/core";
   styleUrl: "./modal.component.scss",
 })
 export class ModalComponent {
-  @Input() textInformation!: string;
+  @Input() public textInformation!: string;
+  @Output() public isConfimEmitter: EventEmitter<boolean> =
+    new EventEmitter<boolean>();
+
+  public isConfirm(isConfirm: boolean): void {
+    this.isConfimEmitter.emit(isConfirm);
+  }
 }
