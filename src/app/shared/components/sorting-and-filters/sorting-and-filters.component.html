@@ -1,0 +1,55 @@
+<form [formGroup]="sortAndFilters" class="sort-filter">
+  <div>
+    <h4>Sort By</h4>
+    <div class="row">
+      <p-dropdown
+        formControlName="sortBy"
+        [options]="sortAndFilterByOptions"
+        placeholder="Select a key"
+        (onChange)="onChange()"
+      ></p-dropdown>
+      <p-dropdown
+        formControlName="sort"
+        [options]="sortOptions"
+        placeholder="Select a sort option"
+        (onChange)="onChange()"
+      ></p-dropdown>
+    </div>
+  </div>
+  <div class="filter">
+    <h4>Filter By</h4>
+    <div class="row">
+      <p-dropdown
+        formControlName="filter"
+        [options]="sortAndFilterByOptions"
+        placeholder="Select a key"
+      ></p-dropdown>
+      @if (isString()) {
+      <input
+        type="text"
+        pInputText
+        id="filterUserValue"
+        name="filterUserValue"
+        formControlName="filterUserValue"
+      />
+      } @else {
+      <p-dropdown
+        formControlName="filterOption"
+        [options]="filterOptions"
+        placeholder="Select a sort option"
+      ></p-dropdown>
+      <input
+        type="number"
+        pInputText
+        id="filterUserValue"
+        name="filterUserValue"
+        formControlName="filterUserValue"
+      />
+      }
+    </div>
+    <div class="row">
+      <p-button label="Filter" (click)="onFilter()"></p-button>
+      <p-button label="Reset" (click)="resetFilters()"></p-button>
+    </div>
+  </div>
+</form>
