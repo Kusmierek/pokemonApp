@@ -11,4 +11,22 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+}
+.many-pokemons-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+.form-button {
+  display: flex;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+::ng-deep {
+  p-message {
+    width: 100%;
+    margin-left: auto;
+    max-width: none;
+  }
 }
