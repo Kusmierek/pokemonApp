@@ -1,7 +1,7 @@
 <p-card
   [style]="{ maxWidth: '360px', backgroundColor: 'var(--primary-color)' }"
 >
-  <form action="" [formGroup]="loginForm">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <div class="input-group">
       <label for="username">Username</label>
       <input

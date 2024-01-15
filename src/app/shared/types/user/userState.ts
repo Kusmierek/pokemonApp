@@ -1,8 +1,8 @@
-import { TRole } from "../role";
+import { Role } from "../role";
 
-export interface IUserState {
+export interface UserState {
   name: string;
   token: string;
-  role: TRole;
+  role: Role;
   isLogged: boolean;
 }

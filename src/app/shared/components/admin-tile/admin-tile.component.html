@@ -3,7 +3,11 @@
   <span>{{ property.key }}:</span> {{ property.value | ellipsis : 10 }}
   }
   <div class="admin-tile-buttons">
-    <p-button label="Delete" severity="danger"></p-button>
+    <p-button
+      label="Delete"
+      severity="danger"
+      (onClick)="onDelete()"
+    ></p-button>
     <p-button
       label="Update"
       [raised]="true"

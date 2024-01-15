@@ -5,17 +5,29 @@ import { Router } from "@angular/router";
   providedIn: "root",
 })
 export class NavigationService {
-  constructor(private router: Router) {}
+  public constructor(private router: Router) {}
 
-  public navigateToRegister() {
+  public navigateToRegister(): void {
     this.router.navigateByUrl("/pokemon/register");
   }
 
-  public navigateToLogin() {
+  public navigateToLogin(): void {
     this.router.navigateByUrl("/pokemon/login");
   }
 
-  public navigateToPokemonAdmin() {
+  public navigateToPokemonAdmin(): void {
     this.router.navigateByUrl("/admin/pokemon");
+  }
+
+  public navigateToPokemon(): void {
+    this.router.navigateByUrl("/pokemon");
+  }
+
+  public navigateToPokemonById(id: string): void {
+    this.router.navigate(["/pokemon/details", id]);
+  }
+
+  public navigateToMain(): void {
+    this.router.navigate([""]);
   }
 }

@@ -1,5 +1,4 @@
 .pokemon-admin {
-  max-width: 80rem;
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
@@ -10,4 +9,23 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.add-pokemon {
+  display: flex;
+  align-items: start;
+  justify-content: center;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 80rem;
 }

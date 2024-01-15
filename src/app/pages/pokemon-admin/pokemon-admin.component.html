@@ -1,30 +1,63 @@
 <main class="pokemon-admin-main">
   <h2>Pokemon Admin Panel</h2>
-  <p-button
-    label="Add Pokemon"
-    (onClick)="changeVisible()"
-    severity="secondary"
-  />
-  <div class="pokemon-admin">
-    @for (pokemon of pokemons | async; track pokemon.id){
-    <app-admin-tile
-      [providedObject]="pokemon"
-      (onUpdateEmitter)="changeVisible($event)"
+  <div class="main-content">
+    <div class="options">
+      <app-sorting-and-filters
+        [sortAndFilterByOptions]="sortAndFilterOptions"
+        [stringKeys]="stringKeys"
+        (sortingChange)="changeSorting($event)"
+        (filterChange)="changeFilter($event)"
+      />
+      <div class="add-pokemon">
+        <img
+          src="https://images.wikidexcdn.net/mwuploads/wikidex/thumb/0/02/latest/20221113131941/Ash_%28Viajes_Pok%C3%A9mon%29_2.png/250px-Ash_%28Viajes_Pok%C3%A9mon%29_2.png"
+        />
+        <p-button
+          label="Add Pokemon"
+          severity="info"
+          (onClick)="changeVisible()"
+        />
+      </div>
+    </div>
+    <div class="pokemon-admin">
+      @for (pokemon of pokemons | async; track pokemon.id){
+      <app-admin-tile
+        [providedObject]="pokemon"
+        (updateEmitter)="changeVisible($event)"
+        (deleteEmitter)="changeIsModalVisible($event)"
+      />
+      }
+    </div>
+    <app-pagination
+      [totalItems]="(allRecordsNumber | async) || 0"
+      (rowOrPageChange)="changePagination($event)"
     />
-    }
+    <p-dialog
+      header="Pokemons Form"
+      [(visible)]="visible"
+      [modal]="true"
+      [style]="{ width: '50vw' }"
+      [draggable]="false"
+      [resizable]="false"
+    >
+      <app-pokemon-form
+        [isUpdate]="isUpdate"
+        [updatedPokemon]="updatedPokemon"
+        (changeVisible)="changeVisible()"
+      />
+    </p-dialog>
+    <p-dialog
+      header="Pokemon"
+      [(visible)]="isModalVisible"
+      [modal]="true"
+      [style]="{ width: '50vw' }"
+      [draggable]="false"
+      [resizable]="false"
+    >
+      <app-modal
+        (isConfimEmitter)="isConfirmedToDelete($event)"
+        [textInformation]="modalText"
+      />
+    </p-dialog>
   </div>
-  <p-dialog
-    header="Pokemons Form"
-    [(visible)]="visible"
-    [modal]="true"
-    [style]="{ width: '50vw' }"
-    [draggable]="false"
-    [resizable]="false"
-  >
-    <app-pokemon-form
-      [isUpdate]="isUpdate"
-      [updatedPokemon]="updatedPokemon"
-      (changeVisible)="changeVisible()"
-    />
-  </p-dialog>
 </main>

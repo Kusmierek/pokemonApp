@@ -14,6 +14,8 @@ import { MessageModule } from "primeng/message";
 import { PokemonCardComponent } from "./pokemon-card/pokemon-card.component";
 import { HttpClientModule } from "@angular/common/http";
 import { PokemonFormComponent } from "./pokemon-form/pokemon-form.component";
+import { ProgressSpinnerModule } from "primeng/progressspinner";
+import { LoaderComponent } from "./loader/loader.component";
 
 @NgModule({
   declarations: [
@@ -23,6 +25,7 @@ import { PokemonFormComponent } from "./pokemon-form/pokemon-form.component";
     PokemonCardComponent,
     RegisterFormComponent,
     PokemonFormComponent,
+    LoaderComponent,
   ],
   imports: [
     ButtonModule,
@@ -36,6 +39,7 @@ import { PokemonFormComponent } from "./pokemon-form/pokemon-form.component";
     MessageModule,
     ReactiveFormsModule,
     HttpClientModule,
+    ProgressSpinnerModule,
   ],
   exports: [
     NavbarComponent,
@@ -43,6 +47,7 @@ import { PokemonFormComponent } from "./pokemon-form/pokemon-form.component";
     InputTextModule,
     LoginFormComponent,
     PokemonCardComponent,
+    LoaderComponent,
     PokemonFormComponent,
   ],
 })

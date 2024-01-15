@@ -6,5 +6,10 @@
   <ng-template pTemplate="header">
     <img alt="Card" src="{{ pokemon.imageUrl }}" />
   </ng-template>
-  <p-button label="See Details" type="Submit" severity="secondary" />
+  <p-button
+    label="See Details"
+    type="Submit"
+    severity="secondary"
+    (onClick)="seeDetails()"
+  />
 </p-card>

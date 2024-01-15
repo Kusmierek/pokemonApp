@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from "@angular/core";
-import { IUpdate } from "../../types/updated";
+import { Update } from "../../types/updated";
 
 @Component({
   selector: "app-admin-tile",
@@ -7,19 +7,28 @@ import { IUpdate } from "../../types/updated";
   styleUrl: "./admin-tile.component.scss",
 })
 export class AdminTileComponent<T extends { id: string }> {
-  @Input() providedObject!: T;
-  @Output() onUpdateEmitter = new EventEmitter<IUpdate<T>>();
+  @Input() public providedObject!: T;
+  @Output() public updateEmitter: EventEmitter<Update<T>> = new EventEmitter<
+    Update<T>
+  >();
+  @Output() public deleteEmitter: EventEmitter<string> =
+    new EventEmitter<string>();
 
-  public natural = new Intl.Collator("en").compare;
+  public natural: (x: string, y: string) => number = new Intl.Collator("en")
+    .compare;
 
-  asIsOrder() {
+  public asIsOrder(): number {
     return 0;
   }
 
-  onUpdate() {
-    this.onUpdateEmitter.emit({
+  public onUpdate(): void {
+    this.updateEmitter.emit({
       isUpdated: true,
       updatedObject: this.providedObject,
     });
+  }
+
+  public onDelete(): void {
+    this.deleteEmitter.emit(this.providedObject.id);
   }
 }
