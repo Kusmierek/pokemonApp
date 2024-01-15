@@ -1,0 +1,14 @@
+.main-page {
+  height: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0rem 5rem;
+  max-width: 100%;
+  flex-wrap: wrap;
+}
+
+.pokemon-title {
+  max-width: 30rem;
+  max-height: 10rem;
+}
