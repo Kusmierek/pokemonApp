@@ -1,21 +1,17 @@
-import {
-  createAction,
-  createActionGroup,
-  emptyProps,
-  props,
-} from "@ngrx/store";
-import { IUserCredentials } from "src/app/shared/types/user/user";
-import { IUserState } from "src/app/shared/types/user/userState";
+/* eslint-disable @typescript-eslint/typedef */
+import { createActionGroup, emptyProps, props } from "@ngrx/store";
+import { UserCredentials } from "src/app/shared/types/user/user";
+import { UserState } from "src/app/shared/types/user/userState";
 
-export const beginLogin = "[Login] Begin Login";
-const loginSuccess = "[Login] Login Success";
-const logout = "[LOGOUT] Logout Success";
+export const beginLogin: string = "[Login] Begin Login";
 
-export const UserActions = createActionGroup({
+export const userActions = createActionGroup({
   source: "user",
   events: {
-    [loginSuccess]: props<{ loginState: Omit<IUserState, "isLogged"> }>(),
-    [logout]: emptyProps(),
-    [beginLogin]: props<{ usercred: IUserCredentials }>(),
+    "[Login] Login Success": props<{
+      loginState: Omit<UserState, "isLogged">;
+    }>(),
+    "[LOGOUT] Logout Success": emptyProps(),
+    "[Login] Begin Login": props<{ usercred: UserCredentials }>(),
   },
 });

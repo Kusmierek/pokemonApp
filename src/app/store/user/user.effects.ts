@@ -1,36 +1,33 @@
+/* eslint-disable @typescript-eslint/typedef */
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 
-import {
-  exhaustMap,
-  map,
-  catchError,
-  of,
-  switchMap,
-  tap,
-  Observable,
-} from "rxjs";
+import { exhaustMap, catchError, of, switchMap, tap } from "rxjs";
 import { UserService } from "src/app/shared/service/user/user.service";
-import { UserActions, beginLogin } from "./user.actions";
-import { IUserState } from "src/app/shared/types/user/userState";
+import { userActions } from "./user.actions";
+import { NavigationService } from "src/app/shared/service/navigation/navigation.service";
 
 @Injectable()
 export class UserEffect {
-  constructor(private action$: Actions, private service: UserService) {}
+  public constructor(
+    private action$: Actions,
+    private service: UserService,
+    private navigation: NavigationService
+  ) {}
 
-  _userregister = createEffect(() =>
+  public userRegister = createEffect(() =>
     this.action$.pipe(
-      ofType(UserActions["[Login]BeginLogin"]),
+      ofType(userActions["[Login]BeginLogin"]),
       exhaustMap((action) => {
         return this.service.login(action.usercred).pipe(
           switchMap((data) => {
             return (
+              // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
               data &&
-              of(UserActions["[Login]LoginSuccess"]({ loginState: data }))
+              of(userActions["[Login]LoginSuccess"]({ loginState: data }))
             );
           }),
           catchError((_error) => {
-            console.log(_error);
             return of(_error);
           })
         );
@@ -38,23 +35,13 @@ export class UserEffect {
     )
   );
 
-  private handleError<T>(operation = "operation", result?: T) {
-    return (error: any): Observable<T> => {
-      console.error(error);
-
-      console.log(`${operation} failed: ${error.message}`);
-
-      return of(result as T);
-    };
-  }
-
-  _userLogout = createEffect(
+  public userLogout = createEffect(
     () =>
       this.action$.pipe(
-        ofType(UserActions["[LOGOUT]LogoutSuccess"]),
+        ofType(userActions["[LOGOUT]LogoutSuccess"]),
         tap(() => {
-          console.log("koks");
           this.service.removeLocalStorage();
+          this.navigation.navigateToMain();
         })
       ),
     { dispatch: false }

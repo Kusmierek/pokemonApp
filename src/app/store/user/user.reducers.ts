@@ -1,22 +1,26 @@
-import { createReducer, on } from "@ngrx/store";
-import { userState } from "./user.state";
-import { UserActions } from "./user.actions";
-import { IUserState } from "src/app/shared/types/user/userState";
-const initialState: IUserState = {
+import { Action, ActionReducer, createReducer, on } from "@ngrx/store";
+import { UserState } from "src/app/shared/types/user/userState";
+import { userActions } from "./user.actions";
+
+const initialState: UserState = {
   name: "",
   role: null,
   token: "",
   isLogged: false,
 };
 
-export const userReducer = createReducer(
+export const userReducer: ActionReducer<UserState, Action> = createReducer(
   initialState,
-  on(UserActions["[Login]LoginSuccess"], (state, { loginState }) => ({
-    ...state,
-    ...loginState,
-    isLogged: true,
-  })),
-  on(UserActions["[LOGOUT]LogoutSuccess"], () => ({
+  // eslint-disable-next-line @typescript-eslint/typedef
+  on(
+    userActions["[Login]LoginSuccess"],
+    (state: UserState, { loginState }: {loginState: Omit<UserState, "isLogged">}) => ({
+      ...state,
+      ...loginState,
+      isLogged: true,
+    })
+  ),
+  on(userActions["[LOGOUT]LogoutSuccess"], () => ({
     name: "",
     role: null,
     token: "",
