@@ -1,15 +1,13 @@
 <nav>
-  <h2>Pokemon App</h2>
-  <p-button
-    label="Register"
-    (click)="navigationService.navigateToRegister()"
-  ></p-button>
-  <p-button
-    label="Login"
-    (click)="navigationService.navigateToLogin()"
-  ></p-button>
-  <p-button
-    label="Admin"
-    (click)="navigationService.navigateToPokemonAdmin()"
-  ></p-button>
+  <h2 (click)="navigationToMainPage()">Pokemon App</h2>
+  @if (isLogged | async) {
+  <p>Hi {{ name | async }} :)</p>
+  <p-button label="Logout" (click)="logout()"></p-button>
+  <p-button label="My Pokemons" (click)="navigationToMyPokemon()"></p-button>
+  }@else {
+  <p-button label="Register" (click)="navigationToRegister()"></p-button>
+  <p-button label="Login" (click)="navigationToLogin()"></p-button>
+  } @if (isAdmin | async){
+  <p-button label="Admin" (click)="navigationToPokemonAdmin()"></p-button>
+  }
 </nav>

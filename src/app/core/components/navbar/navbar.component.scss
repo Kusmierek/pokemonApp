@@ -3,4 +3,12 @@ nav {
   align-items: center;
   justify-content: flex-end;
   gap: 2rem;
+  background-color: #fff14f;
+  width: 100%;
+  padding: 0 1rem;
+  border-radius: 0 0 0.5rem 0.5rem;
+  height: 4rem;
+  h2 {
+    cursor: pointer;
+  }
 }
