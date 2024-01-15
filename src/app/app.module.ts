@@ -11,10 +11,14 @@ import { EffectsModule } from "@ngrx/effects";
 import { getInitialUserState } from "./store/helper/getInitialUser";
 import { userReducer } from "./store/user/user.reducers";
 import { UserEffect } from "./store/user/user.effects";
+import { AuthModule } from "./core/auth/auth.module";
+import { ToastModule } from "primeng/toast";
+import { CoreModule } from "./core/core.module";
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    AuthModule,
     BrowserModule,
     BrowserAnimationsModule,
     ComponentsModule,
@@ -25,6 +29,8 @@ import { UserEffect } from "./store/user/user.effects";
       { initialState: { user: getInitialUserState() } }
     ),
     EffectsModule.forRoot([UserEffect]),
+    CoreModule,
+    ToastModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

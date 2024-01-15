@@ -1,6 +1,10 @@
 @import "primeng/resources/themes/vela-orange/theme.css";
 @import "primeng/resources/primeng.css";
 
+html,
+body {
+  height: 100dvh;
+}
 label {
   font-size: 1.2rem;
   color: #000;
@@ -8,4 +12,13 @@ label {
 
 p-message {
   max-width: 13rem;
+}
+
+body {
+  margin: 0;
+  background-color: #ffdd72;
+}
+
+* {
+  box-sizing: border-box;
 }
